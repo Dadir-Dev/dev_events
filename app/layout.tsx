@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import LightRays from "./components/LightRays";
 import NavBar from "./components/NavBar";
+import { PostHogProvider } from "./providers";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -40,26 +41,28 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground">
-        <NavBar />
-        <div className="absolute inset-0 top-0 z-[-1] min-h-screen ">
-          <LightRays
-            raysOrigin="top-center-offset"
-            raysColor="#5dfeca"
-            raysSpeed={1}
-            lightSpread={0.9}
-            rayLength={1.4}
-            followMouse={true}
-            mouseInfluence={0.05}
-            noiseAmount={0}
-            distortion={0}
-            className="custom-rays"
-            pulsating={false}
-            fadeDistance={1}
-            saturation={1}
-          />
-        </div>
+        <PostHogProvider>
+          <NavBar />
+          <div className="absolute inset-0 top-0 z-[-1] min-h-screen ">
+            <LightRays
+              raysOrigin="top-center-offset"
+              raysColor="#5dfeca"
+              raysSpeed={1}
+              lightSpread={0.9}
+              rayLength={1.4}
+              followMouse={true}
+              mouseInfluence={0.05}
+              noiseAmount={0}
+              distortion={0}
+              className="custom-rays"
+              pulsating={false}
+              fadeDistance={1}
+              saturation={1}
+            />
+          </div>
 
-        <main>{children}</main>
+          <main>{children}</main>
+        </PostHogProvider>
       </body>
     </html>
   );
