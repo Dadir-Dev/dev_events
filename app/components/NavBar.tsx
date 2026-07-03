@@ -14,7 +14,7 @@ const NavBar = () => {
             className="logo"
           />
           <h1 className="text-xl font-bold italic max-sm:hidden px-0.5">
-            DevEvent
+            DevEvents
           </h1>
         </Link>
 
